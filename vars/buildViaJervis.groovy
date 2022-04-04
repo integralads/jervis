@@ -66,6 +66,7 @@ def call() {
     }
     if(generator.isMatrixBuild()) {
         // this occurs in parallel across multiple build nodes (1 node per axis)
+        echo 'is matrix build'
         matrixBuildProjectStage(global_scm, generator, pipeline_generator, script_header, script_footer)
     }
 
@@ -73,10 +74,12 @@ def call() {
     jervisBuildNode(pipeline_generator, generator.labels) {
         if(!generator.isMatrixBuild()) {
             try {
+                echo 'is jervisBuildNode'
                 buildProjectStage(global_scm, generator, pipeline_generator, script_header, script_footer)
             }
             catch(e) {
                 currentBuild.result = 'FAILURE'
+                echo 'ERROR:' + e.toString()
             }
         }
         publishResultsStage(generator, pipeline_generator)
