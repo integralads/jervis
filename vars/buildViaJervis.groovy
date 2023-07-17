@@ -30,6 +30,7 @@ import net.gleske.jervis.lang.pipelineGenerator
   call() is the main method of buildViaJervis()
  */
 def call() {
+    println "inside buildViaJervis()"
     def global_scm = scm
     BRANCH_NAME = env.CHANGE_BRANCH ?: env.BRANCH_NAME
 
