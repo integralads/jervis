@@ -15,9 +15,11 @@
    */
 
 if(hasGlobalVar('adminInjectEnvironment')) {
+    println "inside if hadGlobalVar(adminInjectEnvironment)"
     adminInjectEnvironment()
 }
 else {
+    println "inside else statement"
     injectEnvironment()
 }
 
