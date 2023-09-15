@@ -130,6 +130,7 @@ void call(LifecycleGenerator generator, String github_credentials) {
     /*
        Initialize generator object from GitHub API.
      */
+    echo 'enter prepareJervisLifecycleGenerator.groovy'
     String project = currentBuild.rawBuild.parent.parent.sources[0].source.with { "${it.repoOwner}/${it.repository}" }
     generator.loadPlatformsString(loadCustomResource('platforms.yaml'))
     String branch = ((isPRBuild()) ? "refs/pull/${env.CHANGE_ID}/head" : env.BRANCH_NAME)
