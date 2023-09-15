@@ -37,6 +37,7 @@ String printDecryptedProperties(LifecycleGenerator generator, String credentials
 def call(LifecycleGenerator generator, Closure body) {
     stage('Process Jervis YAML') {
         prepareJervisLifecycleGenerator(generator, 'github-token')
+        echo(generator.jervis_yaml.toString())
         def pipeline_generator = new PipelineGenerator(generator)
         prepareJervisPipelineGenerator(pipeline_generator)
         //attempt to get the private key else return an empty string
