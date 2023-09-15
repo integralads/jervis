@@ -132,13 +132,14 @@ void call(LifecycleGenerator generator, String github_credentials) {
      */
     echo 'enter prepareJervisLifecycleGenerator.groovy'
     String project = currentBuild.rawBuild.parent.parent.sources[0].source.with { "${it.repoOwner}/${it.repository}" }
-    generator.loadPlatformsString(loadCustomResource('platforms.yaml'))
-    String branch = ((isPRBuild()) ? "refs/pull/${env.CHANGE_ID}/head" : env.BRANCH_NAME)
     echo 'debug 1'
+    generator.loadPlatformsString(loadCustomResource('platforms.yaml'))
+    echo 'debug 2'
+    String branch = ((isPRBuild()) ? "refs/pull/${env.CHANGE_ID}/head" : env.BRANCH_NAME)
 
     initializeGenerator(generator, project, branch, github_credentials).with {
         String os_stability = "${generator.label_os}-${generator.label_stability}"
-        echo 'debug 2'
+        echo 'debug 3'
         finalizeGenerator(generator,
             loadCustomResource("lifecycles-${os_stability}.yaml"),
             loadCustomResource("toolchains-${os_stability}.yaml"),
