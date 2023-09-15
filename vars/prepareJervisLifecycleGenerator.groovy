@@ -111,6 +111,7 @@ List initializeGenerator(LifecycleGenerator generator, String project, String JE
 void finalizeGenerator(LifecycleGenerator generator, String lifecycles_json, String toolchains_json, String jervis_yaml, List folder_listing, String jenkins_folder) {
     generator.loadLifecyclesString(lifecycles_json)
     generator.loadToolchainsString(toolchains_json)
+    echo(jervis_yaml)
     generator.loadYamlString(jervis_yaml)
     generator.folder_listing = folder_listing
     String secrets_credentials_id = getObjectValue(generator.jervis_yaml, 'jenkins.secrets_id', '')
