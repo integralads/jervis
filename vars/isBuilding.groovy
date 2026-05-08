@@ -96,11 +96,6 @@ import net.gleske.jervis.tools.FilterByContext
 */
 
 @NonCPS
-def call(def filters, Map = ) {
-    call(filters, complexFilterDefaults)
-}
-
-@NonCPS
 def call(def filters, Map complexFilterDefaults = [:]) {
     /*
       Example complexFilterDefaults Map
